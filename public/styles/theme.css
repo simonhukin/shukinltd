@@ -823,3 +823,9 @@ hr {
 .social-icons a:hover {
   color: #fff;
 }
+
+.header-name{
+  float: left;
+  font-size: 60px;
+  margin-top: 20px;
+}
