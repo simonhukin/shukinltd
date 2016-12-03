@@ -7,7 +7,7 @@
     /* ==========================================================================
    window laod function
    ========================================================================== */
-    
+
     $(window).load(function() {
         $(window).trigger("scroll");
         $(window).trigger("resize");
@@ -90,16 +90,16 @@
 
           })();
     });
-    
+
 
     $(window).resize(function() {
-        
+
     });
 
     /* ==========================================================================
    document ready function
    ========================================================================== */
-    
+
     $(document).ready(function() {
 
         $(window).trigger("resize");
@@ -116,17 +116,16 @@
 
         var pageSection = $(".page-content, .fixed-bg");
           pageSection.each(function(indx){
-              
+
               if ($(this).attr("data-background")){
                   $(this).css("background-image", "url(" + $(this).data("background") + ")");
               }
           });
-          
+
         initWorkFilter();
         init_masonry();
-        gmap_init();
 
-         // smooth scroll 
+         // smooth scroll
         // $(function() {
         //       $('#atom-scroll-to-top').click(function() {
         //       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -165,12 +164,12 @@ function initWorkFilter(){
                 filter: fselector
             });
         });
-        
+
         $(".atom-portfolio-filter > li > a").click(function(){
             $(".atom-portfolio-filter > li > a").removeClass("active");
             $(this).addClass("active");
             fselector = $(this).attr('data-filter');
-            
+
             work_grid.isotope({
                 itemSelector: '.atom-work-item',
                 layoutMode: isotope_mode,
@@ -184,45 +183,10 @@ function initWorkFilter(){
  Masonry
  --------------------------------------------- */
 
-function init_masonry(){    
+function init_masonry(){
     $(".masonry").imagesLoaded(function(){
         $(".masonry").masonry();
     });
-}
-
-/* Google Map 
-================================================== */
-
-function gmap_init() {
-var mapOptions = {
-  scrollwheel: false,
-zoom: 16,
-center: new google.maps.LatLng(44.7679455, 17.1909169), // New York
-styles: [{featureType:"landscape",stylers:[{saturation:-100},{lightness:65},{visibility:"on"}]},{featureType:"poi",stylers:[{saturation:-100},{lightness:51},{visibility:"simplified"}]},{featureType:"road.highway",stylers:[{saturation:-100},{visibility:"simplified"}]},{featureType:"road.arterial",stylers:[{saturation:-100},{lightness:30},{visibility:"on"}]},{featureType:"road.local",stylers:[{saturation:-100},{lightness:40},{visibility:"on"}]},{featureType:"transit",stylers:[{saturation:-100},{visibility:"simplified"}]},{featureType:"administrative.province",stylers:[{visibility:"off"}]/**/},{featureType:"administrative.locality",stylers:[{visibility:"off"}]},{featureType:"administrative.neighborhood",stylers:[{visibility:"on"}]/**/},{featureType:"water",elementType:"labels",stylers:[{visibility:"on"},{lightness:-25},{saturation:-100}]},{featureType:"water",elementType:"geometry",stylers:[{hue:"#ffff00"},{lightness:-25},{saturation:-97}]}]
-};
-  var contentString = '<div id="mapcontent">'+
-                      '<p>Yup, we are here!</p></div>';
-  var infowindow = new google.maps.InfoWindow({
-      maxWidth: 320,
-      content: contentString
-  });
-var mapElement = document.getElementById('google-map');
-var map = new google.maps.Map(mapElement, mapOptions);
-  var image = new google.maps.MarkerImage('images/pin.png',
-      null, null, null, new google.maps.Size(50,71));
-
-  var myLatLng = new google.maps.LatLng(44.7679455, 17.1909169);
-  var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      icon: image,
-      title: 'Hello World!'
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
-  });
-
 }
 
 
